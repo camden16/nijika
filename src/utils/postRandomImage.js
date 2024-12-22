@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
 const Gelbooru = require(`gelbooru-api`);
 const { systemColor, dangerColor } = require('../../config.json');
+const { loadConfig } = require('./editConfig');
 
 module.exports = async (tags, limit) => {
     let reply = 'No source found!'
@@ -30,6 +31,15 @@ module.exports = async (tags, limit) => {
 };
 
 function getRandomImage(tags, limit) {
+    tags = blacklistTags(tags);
     const GelbooruClient = new Gelbooru(tags);
     return GelbooruClient.getRandomPost(tags, limit, 0);
+}
+
+function blacklistTags(tags) {
+    const data = loadConfig();
+
+    tags += ' -' + data.blacklistedTags.join(' -');
+
+    return tags;
 }

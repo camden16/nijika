@@ -5,7 +5,7 @@ const nsfwTags = ['rating:explicit', 'rating:questionable', 'rating:sensitive', 
 
 module.exports = {
     name: 'search',
-    description: 'get a random image by tag on gelbooru',
+    description: 'search a random image on gelbooru by tags',
     // nsfwOnly: Boolean,
     // devOnly: Boolean,
     // testOnly: Boolean,

@@ -12,5 +12,8 @@
   ],
   "prefix": "n!",
   "systemColor": "f2e59e",
-  "dangerColor": "dd2e44"
+  "dangerColor": "dd2e44",
+  "blacklistedTags": [
+    "loli"
+  ]
 }
