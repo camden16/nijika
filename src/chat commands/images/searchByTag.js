@@ -27,8 +27,8 @@ module.exports = {
         }
 
         if(!embed) embed = (await postRandomImage(tags, 50));
-        if(embed.footer) embed.setAuthor({name: title, iconURL: client.user.displayAvatarURL()});
+        if (embed.data.image) embed.setAuthor({name: title, iconURL: client.user.displayAvatarURL()});
 
-        message.channel.send({ embeds: [embed] });
+        await message.channel.send({ embeds: [embed] });
     },
 };
