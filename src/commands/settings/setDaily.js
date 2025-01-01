@@ -3,6 +3,8 @@ const postRandomImage = require('../../utils/postRandomImage');
 const { loadConfig, saveConfig } = require('../../utils/editConfig');
 const { setCron, isRunning } = require('../../handlers/cronHandler');
 
+const tags = 'ijichi_nijika sort:score -rating:explicit -rating:questionable -rating:sensitive solo';
+
 module.exports = {
     /**
      * 
@@ -28,7 +30,7 @@ module.exports = {
         let data = await loadConfig();
         data.dailyPostChannel = interaction.channel.id;
         data.interval = schedule;
-        await saveConfig(data);
+        saveConfig(data);
 
         const task = async () => {
             const channel = interaction.channel;
@@ -38,7 +40,7 @@ module.exports = {
             }
         };
         
-        await setCron(schedule, task);
+        setCron(schedule, task);
 
         if(!isRunning()) await interaction.editReply("❌ There was an issue setting the daily channel.");
         else {
